@@ -16,6 +16,7 @@ addEmployee.onclick = function () {
             whileloop = true
         } else {
             whileloop = false
+            console.log(employeesArray)
             displayAverageSalary(employeesArray)
             return employeesArray
         }
@@ -23,12 +24,13 @@ addEmployee.onclick = function () {
     }
 }
 
-
-function displayAverageSalary(employeesArray) {
+const displayAverageSalary = function(employeesArray) {
     let total = 0;
     let count = 0;
+    let employeeSalary = 0;
     employeesArray.forEach(employee => {
-        total += employeesArray['Salary']
+        employeeSalary = employee['Salary'] / 1
+        total += employeeSalary
         count++
     });
     console.log(total / count)
