@@ -20,9 +20,6 @@ const collectEmployees = function() {
           whileloop = true
       } else {
           whileloop = false
-          // console.log(employeesArray)
-          // displayAverageSalary(employeesArray)
-          // getRandomEmployee(employeesArray)
           return employeesArray
       }
 
@@ -36,7 +33,7 @@ const displayAverageSalary = function(employeesArray) {
   let employeeSalary = 0;
   let averageSalary = 0;
   employeesArray.forEach(employee => {
-      employeeSalary = employee['Salary'] / 1
+      employeeSalary = employee['salary'] / 1
       total += employeeSalary
       count++
   });
@@ -51,7 +48,6 @@ const getRandomEmployee = function(employeesArray) {
   let newEmployee = employeesArray[randomNum]
   let randomFirstName = newEmployee.firstName
   let randomLastName = newEmployee.lastName
-  // let randomEmployee = JSON.stringify(employeesArray[randomNum])
   console.log(`Random employee is ${randomFirstName} ${randomLastName}!`)
 }
 
