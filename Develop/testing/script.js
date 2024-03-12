@@ -8,7 +8,7 @@ addEmployee.onclick = function () {
         if (isNaN(salary)) {
             salary = 0;
         }
-        employeesArray.push({ 'First Name': firstName, 'Last Name': lastName, 'Salary': salary });
+        employeesArray.push({ 'firstName': firstName, 'lastName': lastName, 'Salary': salary });
 
         let userContinue = confirm("Would you like to continue?");
 
@@ -29,12 +29,15 @@ const displayAverageSalary = function(employeesArray) {
     let total = 0;
     let count = 0;
     let employeeSalary = 0;
+    let averageSalary = 0;
     employeesArray.forEach(employee => {
         employeeSalary = employee['Salary'] / 1
         total += employeeSalary
         count++
     });
-    console.log(`The average salary of all employees is ${total / count}`)
+    averageSalary = total / count;
+    let dollarAmount = averageSalary.toLocaleString("en-US", {style:"currency", currency:"USD"});
+    console.log(`The average salary of all employees is ${dollarAmount}`)
 }
 
 
@@ -45,6 +48,9 @@ const getRandomEmployee = function(employeesArray) {
     // });
     
     let randomNum = Math.floor(Math.random() * employeesArray.length);
-    let randomEmployee = JSON.stringify(employeesArray[randomNum])
-    console.log(`Random employee is ${randomEmployee}!`)
+    let newEmployee = employeesArray[randomNum]
+    let randomFirstName = newEmployee.firstName
+    let randomLastName = newEmployee.lastName
+    // let randomEmployee = JSON.stringify(employeesArray[randomNum])
+    console.log(`Random employee is ${randomFirstName} ${randomLastName}!`)
 }
