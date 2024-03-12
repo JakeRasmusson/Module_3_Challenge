@@ -18,6 +18,7 @@ addEmployee.onclick = function () {
             whileloop = false
             console.log(employeesArray)
             displayAverageSalary(employeesArray)
+            getRandomEmployee(employeesArray)
             return employeesArray
         }
 
@@ -33,5 +34,17 @@ const displayAverageSalary = function(employeesArray) {
         total += employeeSalary
         count++
     });
-    console.log(total / count)
+    console.log(`The average salary of all employees is ${total / count}`)
+}
+
+
+const getRandomEmployee = function(employeesArray) {
+    // let employeeCount = 0
+    // employeesArray.forEach(i => {
+        // employeeCount ++
+    // });
+    
+    let randomNum = Math.floor(Math.random() * employeesArray.length);
+    let randomEmployee = JSON.stringify(employeesArray[randomNum])
+    console.log(`Random employee is ${randomEmployee}!`)
 }
