@@ -3,17 +3,56 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects
+  const employeesArray = [];
+  let whileloop = true;
+  while (whileloop == true) {
+      let firstName = prompt('Employee First name');
+      let lastName = prompt('Employee Last name');
+      let salary = prompt('Salary') / 1;
+      if (isNaN(salary)) {
+          salary = 0;
+      }
+      employeesArray.push({ 'firstName': firstName, 'lastName': lastName, 'salary': salary });
+
+      let userContinue = confirm("Would you like to continue?");
+
+      if (userContinue == true) {
+          whileloop = true
+      } else {
+          whileloop = false
+          // console.log(employeesArray)
+          // displayAverageSalary(employeesArray)
+          // getRandomEmployee(employeesArray)
+          return employeesArray
+      }
+
+  }
 }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+  let total = 0;
+  let count = 0;
+  let employeeSalary = 0;
+  let averageSalary = 0;
+  employeesArray.forEach(employee => {
+      employeeSalary = employee['Salary'] / 1
+      total += employeeSalary
+      count++
+  });
+  averageSalary = total / count;
+  let dollarAmount = averageSalary.toLocaleString("en-US", {style:"currency", currency:"USD"});
+  console.log(`The average salary of all employees is ${dollarAmount}`)
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+  let randomNum = Math.floor(Math.random() * employeesArray.length);
+  let newEmployee = employeesArray[randomNum]
+  let randomFirstName = newEmployee.firstName
+  let randomLastName = newEmployee.lastName
+  // let randomEmployee = JSON.stringify(employeesArray[randomNum])
+  console.log(`Random employee is ${randomFirstName} ${randomLastName}!`)
 }
 
 /*
