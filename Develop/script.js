@@ -3,19 +3,23 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
+  // Creating the Empty Employees Array
   const employeesArray = [];
+  //While loop if the user keeps choosing to add employees
   let whileloop = true;
   while (whileloop == true) {
       let firstName = prompt('Employee First name');
       let lastName = prompt('Employee Last name');
-      let salary = prompt('Salary') / 1;
+      let salary = prompt('Salary') / 1; //Divide by one to force str to int
       if (isNaN(salary)) {
+        //check if salary is valid, if not sal = 0
           salary = 0;
       }
+      //Pushing employee object into the array
       employeesArray.push({ 'firstName': firstName, 'lastName': lastName, 'salary': salary });
 
       let userContinue = confirm("Would you like to continue?");
-
+      //if the user chooses to continue else end loop and return the array
       if (userContinue == true) {
           whileloop = true
       } else {
@@ -32,22 +36,29 @@ const displayAverageSalary = function(employeesArray) {
   let count = 0;
   let employeeSalary = 0;
   let averageSalary = 0;
+  //looping through the employees array
   employeesArray.forEach(employee => {
-      employeeSalary = employee['salary'] / 1
+      employeeSalary = employee['salary']
+      //adding each salary to total, and incrementing the employee count
       total += employeeSalary
       count++
   });
+  //calculating the average salary
   averageSalary = total / count;
+  //Making the average into a currency
   let dollarAmount = averageSalary.toLocaleString("en-US", {style:"currency", currency:"USD"});
   console.log(`The average salary of all employees is ${dollarAmount}`)
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
+  //getting a random number between zero and number of employees
   let randomNum = Math.floor(Math.random() * employeesArray.length);
+  //selecting random employee
   let newEmployee = employeesArray[randomNum]
   let randomFirstName = newEmployee.firstName
   let randomLastName = newEmployee.lastName
+  //logging random employee to console
   console.log(`Random employee is ${randomFirstName} ${randomLastName}!`)
 }
 
